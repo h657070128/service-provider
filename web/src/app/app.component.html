@@ -1,0 +1,18 @@
+<h1>Service provider - Customer view</h1>
+
+<span>View as </span>
+<select [(ngModel)]="currentCustomer" (ngModelChange)="currentCustomerOnChange($event)">
+  <option *ngFor="let customer of customers" [ngValue]="customer">{{customer.customerName}}</option>
+</select>
+
+<h3>Subscribed services:</h3>
+<p *ngFor="let subscribedService of subscribedServices">
+  {{subscribedService.serviceName}}
+  <button (click)="unsubscribe(subscribedService.id)">Unsubscribe</button>
+</p>
+
+<h3>Unsubscribed services:</h3>
+<p *ngFor="let unsubscribedService of unsubscribedServices">
+  {{unsubscribedService.serviceName}}
+  <button (click)="subscribe(unsubscribedService.id)">Subscribe</button>
+</p>
